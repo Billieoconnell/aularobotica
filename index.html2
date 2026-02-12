@@ -1,0 +1,387 @@
+Esta é a página web da disciplina de Matemática, com design limpo, letras brancas sobre fundo neutro e títulos principais em vermelho.
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática · Clube do Saber</title>
+    <!-- Fonte moderna e limpa -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #2a2a2a; /* fundo neutro escuro, quase cinza muito escuro */
+            font-family: 'Inter', sans-serif;
+            color: #ffffff; /* letras brancas em todo o texto base */
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #363636; /* leve tom de cinza neutro para destacar card */
+            border-radius: 40px;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+
+        /* TÍTULOS PRINCIPAIS EM VERMELHO */
+        h1, h2, h3 {
+            color: #ff3b3b; /* vermelho vibrante mas agradável */
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.25rem;
+            border-left: 6px solid #ff3b3b;
+            padding-left: 1.2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 1.8rem 0 1rem 0;
+            border-bottom: 2px solid rgba(255, 59, 59, 0.35);
+            padding-bottom: 0.4rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 1.2rem 0 0.8rem 0;
+            color: #ff5e5e; /* um tom de vermelho ligeiramente mais suave para sub-sub */
+        }
+
+        /* textos, parágrafos, listas – tudo branco */
+        p, li, .explicacao, .exemplo-box p, .questao-box p {
+            color: #ffffff;
+        }
+
+        p {
+            margin-bottom: 1.1rem;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        /* BOTÕES ARREDONDADOS (máximo) */
+        .btn {
+            display: inline-block;
+            background-color: #ff3b3b; /* vermelho principal */
+            color: white;
+            font-weight: 600;
+            padding: 0.85rem 2rem;
+            border-radius: 60px; /* extremamente arredondado */
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .btn:hover {
+            background-color: #e02424;
+            transform: scale(1.02);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 20px rgba(255, 40, 40, 0.3);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ff5e5e;
+            background-color: rgba(255, 59, 59, 0.1);
+        }
+
+        .btn-secundario:hover {
+            background-color: #ff3b3b;
+            border-color: #ff3b3b;
+            color: white;
+        }
+
+        /* Cards e áreas de conteúdo – todos com texto branco */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .card {
+            background: #404040; /* neutro mais escuro para contraste sutil */
+            padding: 1.8rem 1.6rem;
+            border-radius: 28px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 6px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            background: #474747;
+        }
+
+        /* EXEMPLOS, QUESTÕES E EXPLICAÇÕES com estilos especiais */
+        .exemplo-box {
+            background: #3a3a3a;
+            border-left: 6px solid #ff3b3b;
+            padding: 1.6rem 2rem;
+            border-radius: 24px;
+            margin: 1.6rem 0;
+            box-shadow: 0 4px 12px black;
+        }
+
+        .questao-box {
+            background: #383838;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin-top: 1.2rem;
+            border: 1px solid #ff5e5e50;
+            position: relative;
+        }
+
+        .explicacao {
+            background: #353535;
+            padding: 1.6rem 2rem;
+            border-radius: 26px;
+            font-style: normal;
+            border: 1px dashed #ff8a8a;
+            margin: 1.8rem 0;
+        }
+
+        .explicacao strong {
+            color: #ffa0a0;
+        }
+
+        /* cabeçalho auxiliar */
+        .subhead {
+            font-size: 1.25rem;
+            color: #dddddd;
+            margin-bottom: 1.8rem;
+            font-weight: 400;
+        }
+
+        ul, ol {
+            padding-left: 1.8rem;
+            margin-bottom: 1.4rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+
+        /* destaques internos */
+        .destaque-matematica {
+            background: #2d2d2d;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #ffb5b5;
+        }
+
+        hr {
+            margin: 2.2rem 0;
+            border: 1px solid #5a5a5a;
+        }
+
+        /* rodapé totalmente branco */
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        /* botões alinhados */
+        .botoes-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.8rem 0 0.8rem;
+        }
+
+        /* fórmulas informais */
+        .math {
+            font-family: 'Courier New', monospace;
+            background: #2b2b2b;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            color: #ffcaca;
+        }
+
+        /* imagem decorativa / símbolo */
+        .math-icon {
+            font-size: 1.9rem;
+            margin-right: 0.4rem;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 1.8rem; }
+            h1 { font-size: 2.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- cabeçalho vermelho -->
+        <h1>
+            <span class="math-icon">📐</span> Matemática essencial
+        </h1>
+        <p class="subhead">Números, raciocínio e prática — tudo com exemplos e questões comentadas.</p>
+        
+        <!-- área de botões arredondados -->
+        <div class="botoes-wrapper">
+            <a href="#" class="btn">📘 Começar exercícios</a>
+            <a href="#" class="btn btn-secundario">🧠 Ver explicações</a>
+            <a href="#" class="btn btn-secundario">📊 Simulados</a>
+        </div>
+
+        <!-- SEÇÃO EXPLICAÇÃO (título vermelho) -->
+        <h2>📖 Explicação • Equações do 1° grau</h2>
+        <div class="explicacao">
+            <p style="font-size:1.2rem; margin-bottom: 0.8rem;"><strong>✚ O que é uma equação?</strong></p>
+            <p>Uma equação é uma igualdade que possui uma ou mais incógnitas (valores desconhecidos). Resolver uma equação significa encontrar o valor da incógnita que torna a igualdade verdadeira.</p>
+            <p><span class="destaque-matematica">Exemplo genérico:</span> <span class="math">ax + b = 0</span>  (com a ≠ 0). Isolamos a incógnita aplicando operações inversas.</p>
+            <p style="margin-bottom: 0;"><strong>🔄 Princípio da igualdade:</strong> tudo que fazemos de um lado, fazemos do outro.</p>
+        </div>
+
+        <!-- SEÇÃO EXEMPLOS (vermelho) -->
+        <h2>🧮 Exemplos resolvidos</h2>
+        <div class="cards-grid">
+            <!-- Exemplo 1 -->
+            <div class="card exemplo-box" style="margin:0; border-left-color: #ff5e5e;">
+                <h3 style="margin-top: 0; color:#ff6e6e;">✏️ Exemplo 1</h3>
+                <p><strong>2x + 5 = 15</strong></p>
+                <p>Subtraímos 5 dos dois lados: <br><span class="math">2x = 10</span></p>
+                <p>Dividimos por 2: <span class="math">x = 5</span> ✅</p>
+                <p style="color:#b0ffb0;">✔ Solução: 5</p>
+            </div>
+            <!-- Exemplo 2 -->
+            <div class="card exemplo-box" style="margin:0; border-left-color: #ff5e5e;">
+                <h3 style="margin-top: 0; color:#ff6e6e;">✏️ Exemplo 2</h3>
+                <p><strong>3(x - 2) = 9</strong></p>
+                <p>Distributiva: <span class="math">3x - 6 = 9</span></p>
+                <p>Adicionamos 6: <span class="math">3x = 15</span> → <span class="math">x = 5</span></p>
+                <p style="color:#b0ffb0;">✔ Solução: 5</p>
+            </div>
+            <!-- Exemplo 3 -->
+            <div class="card exemplo-box" style="margin:0; border-left-color: #ff5e5e;">
+                <h3 style="margin-top: 0; color:#ff6e6e;">✏️ Exemplo 3</h3>
+                <p><strong>x/4 + 3 = 8</strong></p>
+                <p>Subtraímos 3: <span class="math">x/4 = 5</span></p>
+                <p>Multiplicamos por 4: <span class="math">x = 20</span></p>
+                <p style="color:#b0ffb0;">✔ Solução: 20</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO QUESTÕES (com botões arredondados interativos) -->
+        <h2>⚡ Questões para praticar</h2>
+        <div class="questao-box">
+            <h3 style="margin-top: 0; font-size: 1.6rem;">📌 Questão 1</h3>
+            <p style="font-size:1.2rem;">Resolva a equação: <span class="math" style="font-size:1.3rem;">7x - 8 = 4x + 10</span></p>
+            <div class="botoes-wrapper" style="margin-bottom: 0.5rem;">
+                <button class="btn" style="padding: 0.6rem 1.8rem;" onclick="alert('Resposta: x = 6. \n\nExplicação: 7x-4x = 10+8 → 3x=18 → x=6')">A) x = 6</button>
+                <button class="btn btn-secundario" style="padding: 0.6rem 1.8rem;" onclick="alert('Resposta: x = 6. A opção B (x=5) não é correta.')">B) x = 5</button>
+                <button class="btn btn-secundario" style="padding: 0.6rem 1.8rem;" onclick="alert('Resposta: x = 6. C) x = 7 não satisfaz.')">C) x = 7</button>
+            </div>
+            <p style="margin-top: 0.5rem; color:#c9c9c9;"><em>Clique nos botões para verificar.</em></p>
+        </div>
+
+        <div class="questao-box">
+            <h3 style="margin-top: 0; font-size: 1.6rem;">📌 Questão 2</h3>
+            <p style="font-size:1.2rem;">O dobro de um número mais 7 é igual a 31. Qual é esse número?</p>
+            <div class="botoes-wrapper" style="margin-bottom: 0.5rem;">
+                <button class="btn" style="padding: 0.6rem 1.8rem;" onclick="alert('Correto! 2x+7=31 → 2x=24 → x=12.')">12</button>
+                <button class="btn btn-secundario" style="padding: 0.6rem 1.8rem;" onclick="alert('Quase! 2·10+7=27 (não 31). Tente novamente.')">10</button>
+                <button class="btn btn-secundario" style="padding: 0.6rem 1.8rem;" onclick="alert('13·2 =26 +7 =33, não 31.')">13</button>
+            </div>
+        </div>
+
+        <div class="questao-box">
+            <h3 style="margin-top: 0; font-size: 1.6rem;">📌 Questão 3</h3>
+            <p style="font-size:1.2rem;">Se <span class="math">5(x - 3) = 2x + 9</span>, qual o valor de x?</p>
+            <div class="botoes-wrapper" style="margin-bottom: 0.5rem;">
+                <button class="btn btn-secundario" onclick="alert('5x-15=2x+9 → 5x-2x=9+15 → 3x=24 → x=8. A opção 8 é a certa.')">8</button>
+                <button class="btn" onclick="alert('Perfeito! Você acertou: x = 8 👏')">8 (confirmar)</button>
+                <button class="btn btn-secundario" onclick="alert('6 não é solução. Teste: 5(6-3)=15; 2·6+9=21 → 15≠21')">6</button>
+            </div>
+            <p style="color:#a0d6ff; margin-top: 0.6rem;">⭐ Duas opções com mesmo valor — uma dá parabéns!</p>
+        </div>
+
+        <!-- MAIS EXPLICAÇÕES (título vermelho) -->
+        <h2>🔍 Explicação aprofundada</h2>
+        <div class="explicacao" style="background: #3e3e3e;">
+            <h3 style="margin-top: 0; color: #ff8080;">Método prático da balança</h3>
+            <p>Pense em uma balança de dois pratos. Para mantê-la equilibrada, qualquer peso que tiramos de um lado, tiramos também do outro. É assim que isolamos o x.</p>
+            <p><strong>Exemplo com frações:</strong> <span class="math">(2x)/3 = 8</span> → multiplicamos ambos os lados por 3: <span class="math">2x = 24</span> → dividimos por 2: <span class="math">x = 12</span>.</p>
+            <p style="margin-bottom: 0;">📏 <em>Sempre verifique se o valor encontrado satisfaz a equação original.</em></p>
+        </div>
+        
+        <!-- SESSÃO EXTRA DE GEOMETRIA (exemplo adicional) -->
+        <h2>📐 Exemplo com geometria</h2>
+        <div class="card" style="background: #424242;">
+            <h3 style="color: #ff8080;">Perímetro de um retângulo</h3>
+            <p>Um retângulo tem comprimento = x+3 e largura = x. Sabendo que o perímetro é 26 cm, encontre x.</p>
+            <p class="math" style="background: #4a4a4a;">2·(x+3 + x) = 26 → 2·(2x+3)=26 → 4x+6=26 → 4x=20 → x=5</p>
+            <p>Dimensões: comprimento 8 cm, largura 5 cm ✅</p>
+        </div>
+
+        <!-- Tabela de resumo (bônus) -->
+        <h2>📋 Resumo rápido</h2>
+        <div style="background: #3b3b3b; padding: 1.4rem; border-radius: 28px;">
+            <ul>
+                <li>🔴 <strong>Isolar a incógnita</strong> — operações inversas.</li>
+                <li>🟡 <strong>Parênteses:</strong> aplicar distributiva primeiro.</li>
+                <li>🟢 <strong>Denominadores:</strong> multiplicar toda a equação pelo mmc.</li>
+                <li>🔵 <strong>Verificar</strong> sempre a solução.</li>
+            </ul>
+        </div>
+
+        <!-- Chamada com botões arredondados -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; background: #3a3a3a; padding: 1.8rem; border-radius: 50px;">
+            <p style="margin-bottom: 0; font-weight: 600; font-size: 1.2rem;">⚡ Pronto para avançar?</p>
+            <div>
+                <a href="#" class="btn" style="margin-right: 0.8rem;">📚 Mais questões</a>
+                <a href="#" class="btn btn-secundario">🎯 Desafio</a>
+            </div>
+        </div>
+
+        <hr>
+        <footer>
+            <p>📘 Matemática com títulos vermelhos, letras brancas, fundo neutro. • Botões sempre arredondados • exemplos, questões e explicações integradas.</p>
+            <p style="color: #aaa;">desenvolvido para estudo — equações e raciocínio lógico</p>
+        </footer>
+    </div>
+
+    <!-- script adicional para melhor feedback (já temos inline nos botões) -->
+    <script>
+        // apenas para deixar registrado um pequeno aviso de explicação extra via console (não intrusivo)
+        console.log("Matemática: fundo neutro, texto branco, títulos vermelhos e botões super arredondados!");
+    </script>
+</body>
+</html>
+```
+
+Seções de Conteúdo e Interação
+
+A página organiza o aprendizado em blocos claros, combinando teoria e prática. Você encontrará:
+
+· Explicações e Exemplos: Cards com borda vermelha detalham conceitos e mostram resoluções passo a passo.
+· Questões Interativas: Cada pergunta oferece botões de resposta arredondados que, ao serem clicados, revelam se a opção está correta e explicam o cálculo.
+· Navegação por Botões: Os botões de acesso (como "Começar exercícios") e os de resposta seguem o mesmo padrão arredondado, mantendo a consistência visual.
+
+---
+
+Optimization Tip: You can replace the example equations and questions in the cards (e.g., 2x + 5 = 15) with your own content. The button onclick alerts can also be updated to link to specific answer pages.
